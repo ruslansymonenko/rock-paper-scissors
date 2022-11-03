@@ -167,6 +167,12 @@ body{
     transform: scale(0.9);
 }
 
+.move__btn-active {
+    -webkit-box-shadow: 2px 4px 32px -5px rgba(255,255,255,1);
+    -moz-box-shadow: 2px 4px 32px -5px rgba(255,255,255,1);
+    box-shadow: 2px 4px 32px -5px rgba(255,255,255,1);
+}
+
 .move__btn img{
     height: 100px;
     width: 100px;
