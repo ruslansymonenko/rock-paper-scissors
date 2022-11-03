@@ -94,6 +94,14 @@ body{
     width: 200px;
 }
 
+.choosen__move-player{
+    transition: all 0.5s;
+}
+
+.choosen__move-comp{
+    transition: all 0.5s;
+}
+
 .result__field {
     position: relative;
     border: 1px solid black;
