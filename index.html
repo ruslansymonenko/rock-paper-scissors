@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scissors</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="icon" href="./assets/main-icon.svg">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <img src="./assets/main-logo.png" alt="main logo">
+        </header>
+        <div class="container">
+            <div class="app">
+                <section class="app__body">
+                    <div class="results">
+                        <div class="choosen__move">
+                            <img class="choosen__move-player" src="./assets/question-mark.png" alt="choosen move player">
+                        </div>
+                        <div class="result__field">
+                            <div class="player__result" id="playerResult">0</div>
+                            <p>:</p>
+                            <div class="player__result" id="compResult">0</div>
+                        </div>
+                        <div class="choosen__move">
+                            <img class="choosen__move-comp" src="./assets/question-mark.png" alt="choosen move comp">
+                        </div>
+                    </div>
+                    <div class="result__text-container">
+                        <h2 class="result__text">Please, choose the move</h2>
+                    </div>
+                    <h2 class="move__text">Choose the move</h2>
+                    <div class="move__btns">
+                        <button class="move__btn">
+                            <img src="./assets/btn-rock.png" alt="rock">
+                        </button>
+                        <button class="move__btn">
+                            <img src="./assets/btn-scissors.png" alt="scissors">
+                        </button>
+                        <button class="move__btn">
+                            <img src="./assets/btn-paper.png" alt="paper">
+                        </button>
+                    </div>
+                    <button class="play__btn">Play</button>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
