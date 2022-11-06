@@ -124,16 +124,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     playBtn.addEventListener('click', () => {
-        let compChose = setCompChoose(gameOption);
+        if (playerChoose == '') {
+            alertify
+                .alert("Please choose the move", function(){
+                    alertify.message('OK');
+                });
+        } else {
+            let compChose = setCompChoose(gameOption);
 
-        setGamePicture(playerChoose, choosenMovePlayer);
-        setGamePicture(compChose, choosenMoveComp);
-
-        let result =  checkGameResult(playerChoose, compChose);
-        checkWinner(result, gameScore);
-        saveGameResultToStorage(gameScore);
-
-        setTimeout(setStandartText, 1000);
+            setGamePicture(playerChoose, choosenMovePlayer);
+            setGamePicture(compChose, choosenMoveComp);
+    
+            let result =  checkGameResult(playerChoose, compChose);
+            checkWinner(result, gameScore);
+            saveGameResultToStorage(gameScore);
+    
+            setTimeout(setStandartText, 1000);
+        }
     });
 
     resetBtn.addEventListener('click', () => {
