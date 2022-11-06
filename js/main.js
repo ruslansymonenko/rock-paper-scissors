@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const moveBtns = document.querySelectorAll('.move__btn');
     const playBtn = document.querySelector('.play__btn');
+    const resetBtn = document.querySelector('.reset__btn');
     const playerResult = document.querySelector('#playerResult');
     const compResult = document.querySelector('#compResult');
     const choosenMovePlayer = document.querySelector('.choosen__move-player');
@@ -118,5 +119,14 @@ document.addEventListener('DOMContentLoaded', () => {
         checkWinner(result, gameScore);
 
         setTimeout(setStandartText, 1000);
-    })
+    });
+
+    resetBtn.addEventListener('click', () => {
+        if(confirm('Do you want to reset game results?')) {
+            gameScore.player = 0;
+            gameScore.comp = 0;
+            playerResult.textContent = gameScore.player;
+            compResult.textContent = gameScore.comp;
+        }
+    });
 })

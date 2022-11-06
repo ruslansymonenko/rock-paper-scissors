@@ -155,6 +155,7 @@ body{
 }
 .result__text {
     text-decoration: underline;
+    color: #F9A24D;
 }
 .move__text {
     color: white;
@@ -165,6 +166,7 @@ body{
     width: 110px;
     margin: 0 10px;
     transition: all 0.4s;
+    cursor: pointer;
 }
 
 .move__btn:hover{
@@ -186,7 +188,7 @@ body{
     width: 100px;
 }
 
-.play__btn {
+.btn {
     height: 30px;
     width: 120px;
     border: none;
@@ -194,8 +196,9 @@ body{
     color: #2d3436;
     font-weight: bold;
     transition: all 0.4s;
+    cursor: pointer;
 }
 
-.play__btn:hover{
+.btn:hover{
     background-color: #ff7675;
 }
