@@ -11,13 +11,27 @@ document.addEventListener('DOMContentLoaded', () => {
         comp: 0
     };
 
+    // 0 - lose, 1 - win, 2 - draw
+    const gameRules = {
+        'rock': {'rock': 2, 'paper': 0, 'scissors': 1},
+        'paper': {'rock': 1, 'paper': 2, 'scissors': 0},
+        'scissors': {'rock': 0, 'paper': 1, 'scissors': 2}
+    }
+
     const gameOption = ['rock', 'paper', 'scissors'];
+
+    let playerChoose = '';
 
 
     function setPlayerChoose (btn) {
         let action = btn.getAttribute('data-action');
         return action
     };
+
+    function setCompChoose (arr) {
+        let arrElement = Math.floor((Math.random()) * arr.length);
+        return arr[arrElement]
+    }
 
     function changeBtnsStyle (btns, btn) {
         btns.forEach(el => {
@@ -32,23 +46,57 @@ document.addEventListener('DOMContentLoaded', () => {
     function setGamePicture (option, field) {
         switch (option) {
             case 'rock':
-                field.setAttribute('src', './assets/btn-rock.png')
+                field.setAttribute('src', './assets/btn-rock.png');
                 break
             case 'paper':
-                field.setAttribute('src', './assets/btn-paper.png')
+                field.setAttribute('src', './assets/btn-paper.png');
+                break
+            case 'scissors':
+                field.setAttribute('src', './assets/btn-scissors.png');
                 break
         }
-    }
+    };
+
+    function checkGameResult (checkedOption, checking) {
+        let result = 0;
+        let dataForCheck;
+
+        switch (checkedOption) {
+            case 'rock':
+                dataForCheck = gameRules['rock'];
+                result = dataForCheck[checking]
+                console.log(result);
+                break
+            case 'paper':
+                dataForCheck = gameRules['paper'];
+                result = dataForCheck[checking]
+                console.log(result);
+                break
+            case 'scissors':
+                dataForCheck = gameRules['scissors'];
+                result = dataForCheck[checking];
+                console.log(result);
+                break
+        }
+    };
+
+    function checkWinner (gameResult) {
+
+    };
 
     moveBtns.forEach(item => {
         item.addEventListener('click', (e) => {
-            let playerChoose = setPlayerChoose(item);
+            playerChoose = setPlayerChoose(item);
             changeBtnsStyle(moveBtns, playerChoose);            
         });
     });
 
     playBtn.addEventListener('click', () => {
-        setGamePicture('rock', choosenMovePlayer);
-        setGamePicture('paper', choosenMoveComp);
+        let compChose = setCompChoose(gameOption);
+
+        setGamePicture(playerChoose, choosenMovePlayer);
+        setGamePicture(compChose, choosenMoveComp);
+
+        checkGameResult(playerChoose, compChose);
     })
 })
