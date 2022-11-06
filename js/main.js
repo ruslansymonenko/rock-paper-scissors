@@ -137,12 +137,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     resetBtn.addEventListener('click', () => {
-        if(confirm('Do you want to reset game results?')) {
+        alertify.confirm("Do you want to reset game score?",
+        function(){
             gameScore.player = 0;
             gameScore.comp = 0;
             playerResult.textContent = gameScore.player;
             compResult.textContent = gameScore.comp;
             saveGameResultToStorage(gameScore);
-        }
+            alertify.success('Ok');
+        },
+        function(){
+            alertify.error('Cancel');
+        });
     });
 })
