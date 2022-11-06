@@ -25,6 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerChoose = '';
     let standartGameText = 'Please, choose the move';
 
+    loadPreviousResults();
+
+    function loadPreviousResults () {
+        let previouseResults = JSON.parse(localStorage.getItem('results'));
+        gameScore.player = previouseResults.player;
+        gameScore.comp = previouseResults.comp;
+
+        playerResult.textContent = gameScore.player;
+        compResult.textContent = gameScore.comp;
+    }
 
     function setPlayerChoose (btn) {
         let action = btn.getAttribute('data-action');
@@ -102,6 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    function saveGameResultToStorage(currentScore) {
+        localStorage.setItem('results', JSON.stringify(currentScore));
+    }
+
     moveBtns.forEach(item => {
         item.addEventListener('click', (e) => {
             playerChoose = setPlayerChoose(item);
@@ -117,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let result =  checkGameResult(playerChoose, compChose);
         checkWinner(result, gameScore);
+        saveGameResultToStorage(gameScore);
 
         setTimeout(setStandartText, 1000);
     });
@@ -127,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gameScore.comp = 0;
             playerResult.textContent = gameScore.player;
             compResult.textContent = gameScore.comp;
+            saveGameResultToStorage(gameScore);
         }
     });
 })
