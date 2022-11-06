@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const compResult = document.querySelector('#compResult');
     const choosenMovePlayer = document.querySelector('.choosen__move-player');
     const choosenMoveComp = document.querySelector('.choosen__move-comp');
+    const gameText = document.querySelector('.result__text');
 
-    const gameResults = {
+    const gameScore = {
         player: 0,
         comp: 0
     };
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameOption = ['rock', 'paper', 'scissors'];
 
     let playerChoose = '';
+    let standartGameText = 'Please, choose the move';
 
 
     function setPlayerChoose (btn) {
@@ -43,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     };
 
+    function setStandartText () {
+        gameText.textContent = standartGameText;
+    }
+
     function setGamePicture (option, field) {
         switch (option) {
             case 'rock':
@@ -64,24 +70,35 @@ document.addEventListener('DOMContentLoaded', () => {
         switch (checkedOption) {
             case 'rock':
                 dataForCheck = gameRules['rock'];
-                result = dataForCheck[checking]
-                console.log(result);
-                break
+                result = dataForCheck[checking];
+                return result;
             case 'paper':
                 dataForCheck = gameRules['paper'];
-                result = dataForCheck[checking]
-                console.log(result);
-                break
+                result = dataForCheck[checking];
+                return result;
             case 'scissors':
                 dataForCheck = gameRules['scissors'];
                 result = dataForCheck[checking];
-                console.log(result);
-                break
+                return result;
         }
     };
 
-    function checkWinner (gameResult) {
-
+    function checkWinner (gameResult, results) {
+        switch(gameResult){
+            case 2:
+                gameText.textContent = 'This game is a draw';
+                break
+            case 1:
+                results['player'] += 1;
+                playerResult.textContent = results['player'];
+                gameText.textContent = 'Player wins';
+                break
+            case 0:
+                results['comp'] += 1;
+                compResult.textContent = results['comp'];
+                gameText.textContent = 'Computer wins';
+                break
+        }
     };
 
     moveBtns.forEach(item => {
@@ -97,6 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setGamePicture(playerChoose, choosenMovePlayer);
         setGamePicture(compChose, choosenMoveComp);
 
-        checkGameResult(playerChoose, compChose);
+        let result =  checkGameResult(playerChoose, compChose);
+        checkWinner(result, gameScore);
+
+        setTimeout(setStandartText, 1000);
     })
 })
